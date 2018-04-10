@@ -1,5 +1,6 @@
 package com.abhi.android.kotlincodelab
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,10 +26,23 @@ class MainActivity : AppCompatActivity() {
         val countString = textView.text.toString() // after applying plugins in gradle we don't need above methods
 
 
-        var count: Int = Integer.parseInt(countString)
+        var count = Integer.parseInt(countString)
         count++
 
         textView.text = count.toString()
 
+    }
+
+    fun sendRandom(view: View) {
+
+        val randomIntent = Intent(this, RandomActivity::class.java)
+
+        val countString = textView.text.toString()
+
+        val count: Int = Integer.parseInt(countString)
+
+        randomIntent.putExtra(RandomActivity.COUNT, count)
+
+        startActivity(randomIntent)
     }
 }
